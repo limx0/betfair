@@ -106,7 +106,7 @@ class APIError(BetfairError):
             error_data = response.get("error")
             message = (
                 "%s \nParams: %s \nException: %s \nError: %s \nFull Response: %s"
-                % (method, params, exception, error_data, response)
+                % (method, params, exception, error_data, response,)
             )
         else:
             message = "%s \nParams: %s \nException: %s" % (method, params, exception)

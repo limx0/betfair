@@ -117,3 +117,12 @@ class BaseEndpoint:
     @property
     def url(self) -> str:
         return "%s%s" % (self.client.api_uri, "betting/json-rpc/v1")
+
+    def raw_request(self, method, params):
+        return {
+            "method": method,
+            "url": self.url,
+            "data": self.create_req(method, params),
+            "headers": self.client.request_headers,
+            "timeout": (self.connect_timeout, self.read_timeout),
+        }

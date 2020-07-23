@@ -20,6 +20,7 @@ class Account(BaseEndpoint):
         wallet: str = None,
         session: requests.Session = None,
         lightweight: bool = None,
+        request_params=None,
     ) -> Union[dict, resources.AccountFunds]:
         """
         Get available to bet amount.
@@ -32,13 +33,21 @@ class Account(BaseEndpoint):
         """
         params = clean_locals(locals())
         method = "%s%s" % (self.URI, "getAccountFunds")
-        (response, response_json, elapsed_time) = self.request(method, params, session)
+        if request_params:
+            return self.raw_request(params, method)
+        else:
+            (response, response_json, elapsed_time) = self.request(
+                method, params, session
+            )
         return self.process_response(
             response_json, resources.AccountFunds, elapsed_time, lightweight
         )
 
     def get_account_details(
-        self, session: requests.Session = None, lightweight: bool = None
+        self,
+        session: requests.Session = None,
+        lightweight: bool = None,
+        request_params=None,
     ) -> Union[dict, resources.AccountDetails]:
         """
         Returns the details relating your account, including your discount
@@ -51,10 +60,15 @@ class Account(BaseEndpoint):
         """
         params = clean_locals(locals())
         method = "%s%s" % (self.URI, "getAccountDetails")
-        (response, response_json, elapsed_time) = self.request(method, params, session)
-        return self.process_response(
-            response_json, resources.AccountDetails, elapsed_time, lightweight
-        )
+        if request_params:
+            return self.raw_request(params, method)
+        else:
+            (response, response_json, elapsed_time) = self.request(
+                method, params, session
+            )
+            return self.process_response(
+                response_json, resources.AccountDetails, elapsed_time, lightweight
+            )
 
     def get_account_statement(
         self,
@@ -66,6 +80,7 @@ class Account(BaseEndpoint):
         wallet: str = None,
         session: requests.Session = None,
         lightweight: bool = None,
+        request_params=None,
     ) -> Union[dict, resources.AccountStatementResult]:
         """
         Get account statement.
@@ -83,7 +98,12 @@ class Account(BaseEndpoint):
         """
         params = clean_locals(locals())
         method = "%s%s" % (self.URI, "getAccountStatement")
-        (response, response_json, elapsed_time) = self.request(method, params, session)
+        if request_params:
+            return self.raw_request(params, method)
+        else:
+            (response, response_json, elapsed_time) = self.request(
+                method, params, session
+            )
         return self.process_response(
             response_json, resources.AccountStatementResult, elapsed_time, lightweight,
         )
@@ -93,6 +113,7 @@ class Account(BaseEndpoint):
         from_currency: str = None,
         session: requests.Session = None,
         lightweight: bool = None,
+        request_params=None,
     ) -> Union[dict, List[resources.CurrencyRate]]:
         """
         Returns a list of currency rates based on given currency
@@ -105,7 +126,12 @@ class Account(BaseEndpoint):
         """
         params = clean_locals(locals())
         method = "%s%s" % (self.URI, "listCurrencyRates")
-        (response, response_json, elapsed_time) = self.request(method, params, session)
+        if request_params:
+            return self.raw_request(params, method)
+        else:
+            (response, response_json, elapsed_time) = self.request(
+                method, params, session
+            )
         return self.process_response(
             response_json, resources.CurrencyRate, elapsed_time, lightweight
         )

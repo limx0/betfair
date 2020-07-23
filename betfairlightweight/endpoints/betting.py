@@ -1,5 +1,6 @@
-import requests
 from typing import Union, List
+
+import requests
 
 from .baseendpoint import BaseEndpoint
 from .. import resources
@@ -20,6 +21,7 @@ class Betting(BaseEndpoint):
         locale: str = None,
         session: requests.Session = None,
         lightweight: bool = None,
+        request_params=None,
     ) -> Union[list, List[resources.EventTypeResult]]:
         """
         Returns a list of Event Types (i.e. Sports) associated with the markets
@@ -34,7 +36,12 @@ class Betting(BaseEndpoint):
         """
         params = clean_locals(locals())
         method = "%s%s" % (self.URI, "listEventTypes")
-        (response, response_json, elapsed_time) = self.request(method, params, session)
+        if request_params:
+            return self.raw_request(params, method)
+        else:
+            (response, response_json, elapsed_time) = self.request(
+                method, params, session
+            )
         return self.process_response(
             response_json, resources.EventTypeResult, elapsed_time, lightweight,
         )
@@ -45,6 +52,7 @@ class Betting(BaseEndpoint):
         locale: str = None,
         session: requests.Session = None,
         lightweight: bool = None,
+        request_params=None,
     ) -> Union[list, List[resources.CompetitionResult]]:
         """
         Returns a list of Competitions (i.e., World Cup 2013) associated with
@@ -59,7 +67,13 @@ class Betting(BaseEndpoint):
         """
         params = clean_locals(locals())
         method = "%s%s" % (self.URI, "listCompetitions")
-        (response, response_json, elapsed_time) = self.request(method, params, session)
+        if request_params:
+            return self.raw_request(params, method)
+        else:
+            (response, response_json, elapsed_time) = self.request(
+                method, params, session
+            )
+
         return self.process_response(
             response_json, resources.CompetitionResult, elapsed_time, lightweight,
         )
@@ -70,6 +84,7 @@ class Betting(BaseEndpoint):
         granularity: str = "DAYS",
         session: requests.Session = None,
         lightweight: bool = None,
+        request_params=None,
     ) -> Union[list, List[resources.TimeRangeResult]]:
         """
         Returns a list of time ranges in the granularity specified in the
@@ -97,6 +112,7 @@ class Betting(BaseEndpoint):
         locale: str = None,
         session: requests.Session = None,
         lightweight: bool = None,
+        request_params=None,
     ) -> Union[list, List[resources.EventResult]]:
         """
         Returns a list of Events (i.e, Reading vs. Man United) associated with
@@ -122,6 +138,7 @@ class Betting(BaseEndpoint):
         locale: str = None,
         session: requests.Session = None,
         lightweight: bool = None,
+        request_params=None,
     ) -> Union[list, List[resources.MarketTypeResult]]:
         """
         Returns a list of market types (i.e. MATCH_ODDS, NEXT_GOAL) associated with
@@ -147,6 +164,7 @@ class Betting(BaseEndpoint):
         locale: str = None,
         session: requests.Session = None,
         lightweight: bool = None,
+        request_params=None,
     ) -> Union[list, List[resources.CountryResult]]:
         """
         Returns a list of Countries associated with the markets selected by
@@ -172,6 +190,7 @@ class Betting(BaseEndpoint):
         locale: str = None,
         session: requests.Session = None,
         lightweight: bool = None,
+        request_params=None,
     ) -> Union[list, List[resources.VenueResult]]:
         """
         Returns a list of Venues (i.e. Cheltenham, Ascot) associated with
@@ -200,6 +219,7 @@ class Betting(BaseEndpoint):
         locale: str = None,
         session: requests.Session = None,
         lightweight: bool = None,
+        request_params=None,
     ) -> Union[list, List[resources.MarketCatalogue]]:
         """
         Returns a list of information about published (ACTIVE/SUSPENDED) markets
@@ -238,6 +258,7 @@ class Betting(BaseEndpoint):
         locale: str = None,
         session: requests.Session = None,
         lightweight: bool = None,
+        request_params=None,
     ) -> Union[list, List[resources.MarketBook]]:
         """
         Returns a list of dynamic data about markets. Dynamic data includes prices,
@@ -287,6 +308,7 @@ class Betting(BaseEndpoint):
         locale: str = None,
         session: requests.Session = None,
         lightweight: bool = None,
+        request_params=None,
     ) -> Union[list, List[resources.MarketBook]]:
         """
         Returns a list of dynamic data about a market and a specified runner. 
@@ -338,6 +360,7 @@ class Betting(BaseEndpoint):
         record_count: int = None,
         session: requests.Session = None,
         lightweight: bool = None,
+        request_params=None,
     ) -> Union[dict, resources.CurrentOrders]:
         """
         Returns a list of your current orders.
@@ -386,6 +409,7 @@ class Betting(BaseEndpoint):
         record_count: int = None,
         session: requests.Session = None,
         lightweight: bool = None,
+        request_params=None,
     ) -> Union[dict, resources.ClearedOrders]:
         """
         Returns a list of settled bets based on the bet status,
@@ -427,6 +451,7 @@ class Betting(BaseEndpoint):
         net_of_commission: bool = None,
         session: requests.Session = None,
         lightweight: bool = None,
+        request_params=None,
     ) -> Union[list, List[resources.MarketProfitLoss]]:
         """
         Retrieve profit and loss for a given list of OPEN markets.
@@ -458,6 +483,7 @@ class Betting(BaseEndpoint):
         async_: bool = None,
         session: requests.Session = None,
         lightweight: bool = None,
+        request_params=None,
     ) -> Union[dict, resources.PlaceOrders]:
         """
         Place new orders into market.
@@ -491,6 +517,7 @@ class Betting(BaseEndpoint):
         customer_ref: str = None,
         session: requests.Session = None,
         lightweight: bool = None,
+        request_params=None,
     ) -> Union[dict, resources.CancelOrders]:
         """
         Cancel all bets OR cancel all bets on a market OR fully or partially
@@ -519,6 +546,7 @@ class Betting(BaseEndpoint):
         customer_ref: str = None,
         session: requests.Session = None,
         lightweight: bool = None,
+        request_params=None,
     ) -> Union[dict, resources.UpdateOrders]:
         """
         Update non-exposure changing field.
@@ -548,6 +576,7 @@ class Betting(BaseEndpoint):
         async_: bool = None,
         session: requests.Session = None,
         lightweight: bool = None,
+        request_params=None,
     ) -> Union[dict, resources.ReplaceOrders]:
         """
         This operation is logically a bulk cancel followed by a bulk place.
