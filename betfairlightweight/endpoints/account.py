@@ -34,7 +34,7 @@ class Account(BaseEndpoint):
         params = clean_locals(locals())
         method = "%s%s" % (self.URI, "getAccountFunds")
         if request_params:
-            return self.raw_request(params, method)
+            return self.raw_request(method=method, params=params)
         else:
             (response, response_json, elapsed_time) = self.request(
                 method, params, session
@@ -61,7 +61,7 @@ class Account(BaseEndpoint):
         params = clean_locals(locals())
         method = "%s%s" % (self.URI, "getAccountDetails")
         if request_params:
-            return self.raw_request(params, method)
+            return self.raw_request(method=method, params=params)
         (response, response_json, elapsed_time) = self.request(
             method, params, session
         )
@@ -98,7 +98,7 @@ class Account(BaseEndpoint):
         params = clean_locals(locals())
         method = "%s%s" % (self.URI, "getAccountStatement")
         if request_params:
-            return self.raw_request(params, method)
+            return self.raw_request(method=method, params=params)
         (response, response_json, elapsed_time) = self.request(
             method, params, session
         )
@@ -125,7 +125,7 @@ class Account(BaseEndpoint):
         params = clean_locals(locals())
         method = "%s%s" % (self.URI, "listCurrencyRates")
         if request_params:
-            return self.raw_request(params, method)
+            return self.raw_request(method=method, params=params)
         (response, response_json, elapsed_time) = self.request(
             method, params, session
         )

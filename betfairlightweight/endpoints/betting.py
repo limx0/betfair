@@ -37,7 +37,7 @@ class Betting(BaseEndpoint):
         params = clean_locals(locals())
         method = "%s%s" % (self.URI, "listEventTypes")
         if request_params:
-            return self.raw_request(params, method)
+            return self.raw_request(method=method, params=params)
         else:
             (response, response_json, elapsed_time) = self.request(
                 method, params, session
@@ -68,7 +68,7 @@ class Betting(BaseEndpoint):
         params = clean_locals(locals())
         method = "%s%s" % (self.URI, "listCompetitions")
         if request_params:
-            return self.raw_request(params, method)
+            return self.raw_request(method=method, params=params)
         (response, response_json, elapsed_time) = self.request(method, params, session)
         return self.process_response(
             response_json, resources.CompetitionResult, elapsed_time, lightweight,
@@ -98,7 +98,7 @@ class Betting(BaseEndpoint):
         params = clean_locals(locals())
         method = "%s%s" % (self.URI, "listTimeRanges")
         if request_params:
-            return self.raw_request(params, method)
+            return self.raw_request(method=method, params=params)
         (response, response_json, elapsed_time) = self.request(method, params, session)
         return self.process_response(
             response_json, resources.TimeRangeResult, elapsed_time, lightweight,
@@ -126,7 +126,7 @@ class Betting(BaseEndpoint):
         params = clean_locals(locals())
         method = "%s%s" % (self.URI, "listEvents")
         if request_params:
-            return self.raw_request(params, method)
+            return self.raw_request(method=method, params=params)
         (response, response_json, elapsed_time) = self.request(method, params, session)
         return self.process_response(
             response_json, resources.EventResult, elapsed_time, lightweight
@@ -154,7 +154,7 @@ class Betting(BaseEndpoint):
         params = clean_locals(locals())
         method = "%s%s" % (self.URI, "listMarketTypes")
         if request_params:
-            return self.raw_request(params, method)
+            return self.raw_request(method=method, params=params)
         (response, response_json, elapsed_time) = self.request(method, params, session)
         return self.process_response(
             response_json, resources.MarketTypeResult, elapsed_time, lightweight,
@@ -182,7 +182,7 @@ class Betting(BaseEndpoint):
         params = clean_locals(locals())
         method = "%s%s" % (self.URI, "listCountries")
         if request_params:
-            return self.raw_request(params, method)
+            return self.raw_request(method=method, params=params)
         (response, response_json, elapsed_time) = self.request(method, params, session)
         return self.process_response(
             response_json, resources.CountryResult, elapsed_time, lightweight
@@ -210,7 +210,7 @@ class Betting(BaseEndpoint):
         params = clean_locals(locals())
         method = "%s%s" % (self.URI, "listVenues")
         if request_params:
-            return self.raw_request(params, method)
+            return self.raw_request(method=method, params=params)
         (response, response_json, elapsed_time) = self.request(method, params, session)
         return self.process_response(
             response_json, resources.VenueResult, elapsed_time, lightweight
@@ -245,7 +245,7 @@ class Betting(BaseEndpoint):
         params = clean_locals(locals())
         method = "%s%s" % (self.URI, "listMarketCatalogue")
         if request_params:
-            return self.raw_request(params, method)
+            return self.raw_request(method=method, params=params)
         (response, response_json, elapsed_time) = self.request(method, params, session)
         return self.process_response(
             response_json, resources.MarketCatalogue, elapsed_time, lightweight,
@@ -295,7 +295,7 @@ class Betting(BaseEndpoint):
         params = clean_locals(locals())
         method = "%s%s" % (self.URI, "listMarketBook")
         if request_params:
-            return self.raw_request(params, method)
+            return self.raw_request(method=method, params=params)
         (response, response_json, elapsed_time) = self.request(method, params, session)
         return self.process_response(
             response_json, resources.MarketBook, elapsed_time, lightweight
@@ -349,7 +349,7 @@ class Betting(BaseEndpoint):
         params = clean_locals(locals())
         method = "%s%s" % (self.URI, "listRunnerBook")
         if request_params:
-            return self.raw_request(params, method)
+            return self.raw_request(method=method, params=params)
         (response, response_json, elapsed_time) = self.request(method, params, session)
         return self.process_response(
             response_json,
@@ -398,7 +398,7 @@ class Betting(BaseEndpoint):
         params = clean_locals(locals())
         method = "%s%s" % (self.URI, "listCurrentOrders")
         if request_params:
-            return self.raw_request(params, method)
+            return self.raw_request(method=method, params=params)
         (response, response_json, elapsed_time) = self.request(method, params, session)
         return self.process_response(
             response_json, resources.CurrentOrders, elapsed_time, lightweight
@@ -453,7 +453,7 @@ class Betting(BaseEndpoint):
         params = clean_locals(locals())
         method = "%s%s" % (self.URI, "listClearedOrders")
         if request_params:
-            return self.raw_request(params, method)
+            return self.raw_request(method=method, params=params)
         (response, response_json, elapsed_time) = self.request(method, params, session)
         return self.process_response(
             response_json, resources.ClearedOrders, elapsed_time, lightweight
@@ -485,7 +485,7 @@ class Betting(BaseEndpoint):
         params = clean_locals(locals())
         method = "%s%s" % (self.URI, "listMarketProfitAndLoss")
         if request_params:
-            return self.raw_request(params, method)
+            return self.raw_request(method=method, params=params)
         (response, response_json, elapsed_time) = self.request(method, params, session)
         return self.process_response(
             response_json, resources.MarketProfitLoss, elapsed_time, lightweight,
@@ -524,7 +524,7 @@ class Betting(BaseEndpoint):
         params = clean_locals(locals())
         method = "%s%s" % (self.URI, "placeOrders")
         if request_params:
-            return self.raw_request(params, method)
+            return self.raw_request(method=method, params=params)
         (response, response_json, elapsed_time) = self.request(method, params, session)
         return self.process_response(
             response_json, resources.PlaceOrders, elapsed_time, lightweight
@@ -555,7 +555,7 @@ class Betting(BaseEndpoint):
         params = clean_locals(locals())
         method = "%s%s" % (self.URI, "cancelOrders")
         if request_params:
-            return self.raw_request(params, method)
+            return self.raw_request(method=method, params=params)
         (response, response_json, elapsed_time) = self.request(method, params, session)
         return self.process_response(
             response_json, resources.CancelOrders, elapsed_time, lightweight
@@ -585,7 +585,7 @@ class Betting(BaseEndpoint):
         params = clean_locals(locals())
         method = "%s%s" % (self.URI, "updateOrders")
         if request_params:
-            return self.raw_request(params, method)
+            return self.raw_request(method=method, params=params)
         (response, response_json, elapsed_time) = self.request(method, params, session)
         return self.process_response(
             response_json, resources.UpdateOrders, elapsed_time, lightweight
@@ -623,7 +623,7 @@ class Betting(BaseEndpoint):
         params = clean_locals(locals())
         method = "%s%s" % (self.URI, "replaceOrders")
         if request_params:
-            return self.raw_request(params, method)
+            return self.raw_request(method=method, params=params)
         (response, response_json, elapsed_time) = self.request(method, params, session)
         return self.process_response(
             response_json, resources.ReplaceOrders, elapsed_time, lightweight
