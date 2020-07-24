@@ -62,13 +62,12 @@ class Account(BaseEndpoint):
         method = "%s%s" % (self.URI, "getAccountDetails")
         if request_params:
             return self.raw_request(params, method)
-        else:
-            (response, response_json, elapsed_time) = self.request(
-                method, params, session
-            )
-            return self.process_response(
-                response_json, resources.AccountDetails, elapsed_time, lightweight
-            )
+        (response, response_json, elapsed_time) = self.request(
+            method, params, session
+        )
+        return self.process_response(
+            response_json, resources.AccountDetails, elapsed_time, lightweight
+        )
 
     def get_account_statement(
         self,
@@ -100,10 +99,9 @@ class Account(BaseEndpoint):
         method = "%s%s" % (self.URI, "getAccountStatement")
         if request_params:
             return self.raw_request(params, method)
-        else:
-            (response, response_json, elapsed_time) = self.request(
-                method, params, session
-            )
+        (response, response_json, elapsed_time) = self.request(
+            method, params, session
+        )
         return self.process_response(
             response_json, resources.AccountStatementResult, elapsed_time, lightweight,
         )
@@ -128,10 +126,9 @@ class Account(BaseEndpoint):
         method = "%s%s" % (self.URI, "listCurrencyRates")
         if request_params:
             return self.raw_request(params, method)
-        else:
-            (response, response_json, elapsed_time) = self.request(
-                method, params, session
-            )
+        (response, response_json, elapsed_time) = self.request(
+            method, params, session
+        )
         return self.process_response(
             response_json, resources.CurrencyRate, elapsed_time, lightweight
         )
